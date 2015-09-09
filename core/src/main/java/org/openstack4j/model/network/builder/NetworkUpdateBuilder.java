@@ -33,4 +33,10 @@ public interface NetworkUpdateBuilder extends Builder<NetworkUpdateBuilder, Netw
      * @return the builder
      */
     NetworkUpdateBuilder shared(boolean shared);
+    /**
+     * Indicates whether this network is externally accessible.
+     * @param external if true this network is externally accessible
+     * @return
+     */
+    NetworkUpdateBuilder external (boolean external);
 }

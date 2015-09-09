@@ -32,4 +32,10 @@ public interface NetworkUpdate extends ModelEntity, Buildable<NetworkUpdateBuild
      */
     boolean isShared();
     
+    /**
+     * Indicates whether this network is externally accessible.
+     * @return true if this network is externally accessibled
+     */
+    boolean isExternal();
+    
 }

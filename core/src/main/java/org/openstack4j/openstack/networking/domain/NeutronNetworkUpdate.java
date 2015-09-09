@@ -24,7 +24,8 @@ public class NeutronNetworkUpdate implements NetworkUpdate {
     private Boolean shared;
     @JsonProperty("admin_state_up")
     private Boolean adminStateUp;
-    
+    @JsonProperty("router:external")
+    private Boolean external;
     public static NetworkUpdateBuilder builder() {
         return new NetworkUpdateConcreteBuilder();
     }
@@ -51,7 +52,14 @@ public class NeutronNetworkUpdate implements NetworkUpdate {
         return shared == null ? false : shared;
     }
     
+    @JsonIgnore
     @Override
+    public boolean isExternal() {
+		return external == null ? false : external;
+	}
+
+
+	@Override
     public String toString() {
         return Objects.toStringHelper(this).omitNullValues()
                   .add("name", name).add("adminStateUp", adminStateUp).add("shared", shared)
@@ -98,6 +106,12 @@ public class NeutronNetworkUpdate implements NetworkUpdate {
             model.shared = shared;
             return this;
         }
+
+		@Override
+		public NetworkUpdateBuilder external(boolean external) {
+			model.external=external;
+			return this;
+		}
         
     }
 }
